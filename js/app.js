@@ -19,8 +19,14 @@ const App = (() => {
 
   // ── Init ───────────────────────────────────────────────────────────────────
   function init() {
+
     // Connect socket
-    socket = io();
+
+    socket = io('https://ludo-backend-ypv6.onrender.com', {
+  transports: ['websocket', 'polling'],
+  withCredentials: false,
+});
+
     setupSocketListeners();
 
     // Check URL for room ID (deep link)
